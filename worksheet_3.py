@@ -379,5 +379,4 @@ except KeyboardInterrupt:
     print("\nProgram interrupted using Ctrl+C.")
     print("Total Number of Lines:", line_count)
     print("Program exited.")
-
-print("Gay")
+    
