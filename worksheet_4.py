@@ -1,95 +1,243 @@
-from datetime import datetime
+# Lists
+
+courses = [
+    "Introduction to Programming",
+    "Calculus I",
+    "Data Structures and Algorithms",
+    "Linear Algebra",
+    "Physics I",
+    "Chemistry I",
+    "Biology I",
+    "Microeconomics",
+    "Macroeconomics",
+    "Psychology I",
+    "History I",
+    "English Composition I",
+    "Introduction to Philosophy",
+    "Calculus II",
+    "Discrete Mathematics"
+]
+
+print(courses)
+
+# Sorting without changing the original list
+sorted_courses = sorted(courses)
+print(sorted_courses)
+
+reverse_sorted_courses = sorted(courses, reverse=True)
+print(reverse_sorted_courses)
+
+# Reversing the list
+courses.reverse()
+print(courses)
+
+courses.reverse()
+print(courses)
+
+# Sorting the original list
+courses.sort()
+print(courses)
+
+courses.sort(reverse=True)
+print(courses)
 
 
-# Session 7 - Exercise 1: Student registration
+# Updating the available courses
 
-def course_enrollment(student_id, first_name, last_name, course_id, course_name, action="Echo"):
-    student = f"{first_name} {last_name} ({student_id})"
-    course = f"{course_name} ({course_id})"
+courses = [
+    "Introduction to Programming",
+    "Calculus I",
+    "Data Structures and Algorithms",
+    "Linear Algebra",
+    "Physics I",
+    "Chemistry I",
+    "Biology I",
+    "Microeconomics",
+    "Macroeconomics",
+    "Psychology I",
+    "History I",
+    "English Composition I"
+]
 
-    if action == "Add":
-        print(f"Added: {student} to {course}")
-    elif action == "Amend":
-        print(f"Amended: {student}'s enrollment in {course}")
-    elif action == "Delete":
-        print(f"Deleted: {student}'s enrollment from {course}")
+sorted_courses = sorted(courses)
+
+print("\nThe following courses are available for expression of interest if students meet the prerequisites:")
+
+for course in sorted_courses:
+    print(course)
+
+# Replacing a withdrawn course
+withdrawn_course = courses[3]
+courses[3] = "Discrete Mathematics"
+
+print(f"\n{withdrawn_course} is no longer available.")
+print(f"It has been replaced with {courses[3]}.")
+
+# Adding three more courses
+courses.insert(0, "Introduction to Philosophy")
+courses.insert(len(courses) // 2, "Calculus II")
+courses.append("Linear Algebra")
+
+print("\nUpdated available courses:")
+
+for course in courses:
+    print(course)
+
+# Removing four unavailable courses
+unavailable_courses = []
+
+unavailable_courses.append(courses.pop(1))
+unavailable_courses.append(courses.pop(4))
+unavailable_courses.append(courses.pop(7))
+unavailable_courses.append(courses.pop(9))
+
+print("\nThe following courses are unavailable due to technical and room availability issues:")
+
+for course in unavailable_courses:
+    print(course)
+
+print("\nThe withdrawn courses have been removed.")
+
+print("\nRemaining available courses:")
+
+for course in courses:
+    print(course)
+
+
+# Tuples and loops
+
+course_data = [
+    (1, "Introduction to Programming"),
+    (2, "Calculus I"),
+    (3, "Data Structures and Algorithms"),
+    (4, "Linear Algebra"),
+    (5, "Physics I"),
+    (6, "Chemistry I"),
+    (7, "Biology I"),
+    (8, "Microeconomics"),
+    (9, "Macroeconomics"),
+    (10, "Psychology I"),
+    (11, "History I"),
+    (12, "English Composition I"),
+    (13, "Introduction to Philosophy"),
+    (14, "Calculus II"),
+    (15, "Discrete Mathematics")
+]
+
+course_names = []
+
+for course_id, course_name in course_data:
+    course_names.append(course_name)
+
+print("\nCourse names:")
+
+for name in course_names:
+    print(name)
+
+
+# Conditional statements and loops
+
+course_departments = [
+    [1, "Computer Science"],
+    [2, "Mathematics"],
+    [3, "Computer Science"],
+    [4, "Mathematics"],
+    [5, "Physics"],
+    [6, "Chemistry"],
+    [7, "Biology"],
+    [8, "Economics"],
+    [9, "Economics"],
+    [10, "Psychology"],
+    [11, "History"],
+    [12, "English"],
+    [13, "Philosophy"],
+    [14, "Mathematics"],
+    [15, "Computer Science"]
+]
+
+# Search for the department using course ID
+while True:
+    num = input("\nEnter course ID (1-15), or 'quit' or '0' to exit: ").strip()
+
+    if num.lower() == "quit" or num == "0":
+        print("Exiting department search.")
+        break
+
+    elif num.isdigit():
+        num = int(num)
+
+        if 1 <= num <= 15:
+            found = False
+
+            for course in course_departments:
+                if course[0] == num:
+                    print(f"Course ID {num} is in the {course[1]} department.")
+                    found = True
+                    break
+
+            if not found:
+                print(f"Course ID {num} not found.")
+
+        else:
+            print("Course ID is out of range (1-15), try again.")
+
     else:
-        print(f"Echo: {student} registered for {course}")
+        print("Invalid input. Please enter a valid course ID.")
 
 
-def registration_demo():
-    course_enrollment("S1234", "Alice", "Brown", "CSE101", "Introduction to Computer Science")
-    course_enrollment("S5678", "Bob", "Smith", "CSE102", "Data Structures", action="Add")
-    course_enrollment("S2001", "Charlie", "Davis", "CS103", "Algorithms")
-    course_enrollment("S2002", "Diana", "Evans", "CS104", "Databases", action="Amend")
-    course_enrollment("S2003", "Ethan", "Ford", "CS105", "Operating Systems", action="Delete")
+# Course information retrieval
 
+course_details = [
+    [1, "Introduction to Programming", "Computer Science", []],
+    [2, "Calculus I", "Mathematics", []],
+    [3, "Data Structures and Algorithms", "Computer Science", ["Introduction to Programming"]],
+    [4, "Linear Algebra", "Mathematics", []],
+    [5, "Physics I", "Physics", []],
+    [6, "Chemistry I", "Chemistry", []],
+    [7, "Biology I", "Biology", []],
+    [8, "Microeconomics", "Economics", []],
+    [9, "Macroeconomics", "Economics", ["Microeconomics"]],
+    [10, "Psychology I", "Psychology", []],
+    [11, "History I", "History", []],
+    [12, "English Composition I", "English", []],
+    [13, "Introduction to Philosophy", "Philosophy", []],
+    [14, "Calculus II", "Mathematics", ["Calculus I"]],
+    [15, "Discrete Mathematics", "Computer Science", ["Introduction to Programming"]]
+]
 
-# Session 7 - Exercise 2: Student course list
+# Find a course and display its information
+while True:
+    user_input = input("\nEnter course ID for details (1-15), or 'quit' or '0' to exit: ").strip()
 
-def collect_courses(student_id, student_name):
-    print(f"\nWelcome {student_name} (ID: {student_id})")
-    courses = []
+    if user_input.lower() == "quit" or user_input == "0":
+        print("Exiting the program.")
+        break
 
-    # Get four course IDs from the student.
-    for i in range(4):
-        course_id = input(f"Enter course {i + 1} ID: ").strip()
-        courses.append(course_id)
+    elif user_input.isdigit():
+        course_id = int(user_input)
 
-    semester = input("Enter semester: ").strip()
-    year = input("Enter year: ").strip()
+        if 1 <= course_id <= 15:
+            found = False
 
-    print("\n--- Course Enrollment Summary ---")
-    print(f"Student ID: {student_id}")
-    print(f"Student Name: {student_name}")
-    print("Enrolled Courses:")
-    for course in courses:
-        print(f"- {course}")
-    print(f"Semester: {semester}")
-    print(f"Year: {year}")
+            for course in course_details:
+                if course[0] == course_id:
+                    print(f"Course ID: {course[0]}")
+                    print(f"Course Name: {course[1]}")
+                    print(f"Department: {course[2]}")
 
+                    if course[3]:
+                        print(f"Prerequisites: {', '.join(course[3])}")
+                    else:
+                        print("Prerequisites: None")
 
-def store_course_info(student_id, student_name, **courses):
-    print("\n--- Student Course Details ---")
-    print(f"Student ID: {student_id}")
-    print(f"Student Name: {student_name}")
+                    found = True
+                    break
 
-    if courses:
-        for course_id, course_name in courses.items():
-            print(f"- {course_id}: {course_name}")
+            if not found:
+                print("Course not found.")
+
+        else:
+            print("Course ID is out of range (1-15), try again.")
+
     else:
-        print("No courses were provided.")
-
-
-def course_list_demo():
-    sid = input("Enter student ID: ").strip()
-    name = input("Enter student name: ").strip()
-    collect_courses(sid, name)
-
-    # Keyword arguments make a simple course dictionary.
-    store_course_info(
-        "S2022", "Nar",
-        ICT101="Introduction to Computers",
-        ICT102="Applied Communication",
-        MTH104="Discrete Mathematics",
-        ENG101="English Communication"
-    )
-
-
-# Session 7 - Exercise 3: Tkinter calculator
-
-def open_calculator():
-    import tkinter as tk
-    from tkinter import messagebox
-
-    root = tk.Tk()
-    root.title("Basic Calculator")
-    root.resizable(False, False)
-
-    tk.Label(root, text="First number:").grid(row=0, column=0, padx=10, pady=6)
-    entry1 = tk.Entry(root)
-    entry1.grid(row=0, column=1, padx=10, pady=6)
-
-    tk.Label(root, text="Second number:").grid(row=1, column=0, padx=10, pady=6)
-    entry2 = tk.Entry(root)
-    entry2.grid(row=1, column=1, padx=10, pady=6)
+        print("Invalid input. Please enter a valid course ID.")
