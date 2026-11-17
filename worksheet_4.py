@@ -242,4 +242,3 @@ while True:
     else:
         print("Invalid input. Please enter a valid course ID.")
 
-puty
