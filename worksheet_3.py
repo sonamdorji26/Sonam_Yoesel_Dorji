@@ -371,6 +371,7 @@ print("Enter text. Press Ctrl+C to exit.")
 try:
     while True:
         user_input = input("\nEnter text: ")
+        
 
         line_count += 1
         print("Line", line_count, ":", user_input)
